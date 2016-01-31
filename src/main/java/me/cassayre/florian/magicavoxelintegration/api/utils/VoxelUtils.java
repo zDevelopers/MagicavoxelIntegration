@@ -2,8 +2,9 @@ package me.cassayre.florian.magicavoxelintegration.api.utils;
 
 import java.nio.ByteBuffer;
 
-public class VoxelUtils
+public final class VoxelUtils
 {
+    // Util class
     private VoxelUtils()
     {
     }

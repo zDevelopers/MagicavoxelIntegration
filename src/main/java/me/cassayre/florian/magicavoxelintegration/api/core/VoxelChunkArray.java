@@ -81,11 +81,14 @@ public class VoxelChunkArray extends VoxelChunk
         return total;
     }
 
-    public void setVoxel(int x, int y, int z, byte colorIndex)
+    public void setVoxel(int x, int y, int z, int colorIndex)
     {
         if(x < 0 || y < 0 || z < 0 || x >= sizeX || y >= sizeY || z >= sizeZ)
             throw new IllegalArgumentException("Coordinate out of bound");
 
-        array[x][y][z] = colorIndex;
+        if(colorIndex < 0 || colorIndex >= VoxelChunkPalette.PALETTE_SIZE)
+            throw new IllegalArgumentException("Color index out of bound");
+
+        array[x][y][z] = (byte) colorIndex;
     }
 }

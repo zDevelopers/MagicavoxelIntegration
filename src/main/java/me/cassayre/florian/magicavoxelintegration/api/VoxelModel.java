@@ -3,10 +3,7 @@ package me.cassayre.florian.magicavoxelintegration.api;
 import me.cassayre.florian.magicavoxelintegration.api.core.VoxelChunkMain;
 import me.cassayre.florian.magicavoxelintegration.api.utils.VoxelUtils;
 
-import java.io.DataOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Highest level class representing a Magicavoxel model.
@@ -36,31 +33,33 @@ public class VoxelModel
      * @param z coordinate z
      * @param colorIndex index of the color
      */
-    public void setVoxel(int x, int y, int z, byte colorIndex)
+    public void setVoxel(int x, int y, int z, int colorIndex)
     {
         main.setVoxel(x, y, z, colorIndex);
     }
 
     /**
-     * Sets the color to the specified index. {@code colorIndex} cannot be equal to 0.
-     * @param index the id of the color
+     * Sets the color to the specified colorIndex. {@code colorIndex} cannot be equal to 0.
+     * @param colorIndex the id of the color
      * @param r red
      * @param g green
      * @param b blue
      * @param a transparency
      */
-    public void setColorIndex(int index, int r, int g, int b, int a)
+    public void setColorIndex(int colorIndex, int r, int g, int b, int a)
     {
-        main.setColorIndex(index, r, g, b, a);
+        main.setColorIndex(colorIndex, r, g, b, a);
     }
 
     /**
      * Writes the model in a output stream.
-     * @param out the output stream
+     * @param outputStream the output stream
      * @throws IOException
      */
-    public void serialize(DataOutputStream out) throws IOException
+    public void serialize(OutputStream outputStream) throws IOException
     {
+        DataOutputStream out = new DataOutputStream(outputStream);
+
         out.write(MAGIC_FORMAT.getBytes());
         out.writeInt(VoxelUtils.reverse(VERSION_NUMBER));
 
@@ -74,7 +73,7 @@ public class VoxelModel
      */
     public void save(File file) throws IOException
     {
-        DataOutputStream out = new DataOutputStream(new FileOutputStream(file));
+        OutputStream out = new FileOutputStream(file);
 
         serialize(out);
 

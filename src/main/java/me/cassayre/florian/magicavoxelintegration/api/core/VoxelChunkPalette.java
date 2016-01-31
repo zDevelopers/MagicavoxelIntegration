@@ -7,7 +7,7 @@ public class VoxelChunkPalette extends VoxelChunk
 {
     private final static String CHUNK_NAME = "RGBA";
 
-    private final static int PALETTE_SIZE = 256;
+    public final static int PALETTE_SIZE = 256;
 
     private final int[] palette = new int[PALETTE_SIZE];
 

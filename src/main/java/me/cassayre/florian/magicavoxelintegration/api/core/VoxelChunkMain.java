@@ -27,7 +27,7 @@ public class VoxelChunkMain extends VoxelChunk
         palette = new VoxelChunkPalette();
     }
 
-    public void setVoxel(int x, int y, int z, byte colorIndex)
+    public void setVoxel(int x, int y, int z, int colorIndex)
     {
         array.setVoxel(x, y, z, colorIndex);
     }
