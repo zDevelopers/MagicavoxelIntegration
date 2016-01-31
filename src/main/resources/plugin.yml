@@ -1,0 +1,6 @@
+name: MagicavoxelIntegration
+version: 0.1
+main: me.cassayre.florian.magicavoxelintegration.MagicavoxelIntegration
+
+description: Adds compatiblity with the Magicavoxel file format.
+author: Florian Cassayre
